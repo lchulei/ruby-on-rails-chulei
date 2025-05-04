@@ -1,0 +1,9 @@
+---
+- :id: 1
+  :amount: 150.0
+  :description: Пох?д в к?нотеатр
+  :categories:
+  - В?дпочинок
+  :payment_methods:
+  - Карта
+  :date: '2025-05-01'

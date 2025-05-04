@@ -1,0 +1,8 @@
+---
+Покупка ноутбука:
+  :amount: 30000
+  :categories:
+  - Техніка
+  :payment_methods:
+  - Картка
+  :date: 2025-05-02

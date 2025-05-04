@@ -1,0 +1,9 @@
+---
+- :id: 1
+  :amount: 15.0
+  :description: Транспорт
+  :categories:
+    - Робота
+  :payment_methods:
+    - Гот?вка
+  :date: '2025-05-04'
