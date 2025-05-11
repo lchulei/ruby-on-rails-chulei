@@ -1,0 +1,29 @@
+<h1>Список витрат</h1>
+<%= link_to "Нова витрата", new_expense_path, class: "btn btn-success mb-3" %>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Сума</th>
+      <th>Опис</th>
+      <th>Дата</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @expenses.each do |expense| %>
+      <tr>
+        <td><%= expense.amount %></td>
+        <td><%= expense.description %></td>
+        <td><%= expense.spendAt %></td>
+        <td>
+            <div class="d-flex gap-2">
+                <%= link_to "Показати", expense_path(expense), class: "btn btn-info btn-sm" %>
+                <%= link_to "Редагувати", edit_expense_path(expense), class: "btn btn-warning btn-sm" %>
+                <%= button_to "Видалити", expense_path(expense), method: :delete, data: { confirm: "Ви впевнені?" }, class: "btn btn-danger btn-sm" %>
+            </div>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
