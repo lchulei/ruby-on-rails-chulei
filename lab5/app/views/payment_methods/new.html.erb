@@ -1,0 +1,3 @@
+<h1><%= action_name == 'new' ? 'Новий спосіб оплати' : 'Редагувати спосіб оплати' %></h1>
+<%= render 'form', payment_method: @payment_method %>
+<%= link_to "Назад", payment_methods_path, class: "btn btn-secondary mt-3" %>

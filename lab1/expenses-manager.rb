@@ -4,7 +4,8 @@ require 'date'
 
 class ExpenseManager
   def initialize
-    @expenses = {}
+    @expenses = {} 
+    initialize_with_sample_expense
   end
 
   def add_expense(title, data)
@@ -14,6 +15,15 @@ class ExpenseManager
       payment_methods: data[:payment_methods],
       date: data[:date] || Date.today
     }
+  end
+
+  def initialize_with_sample_expense
+     add_expense("Кава", {
+      amount: 45,
+      categories: ["Їжа", "Напої"],
+      payment_methods: ["Готівка"],
+      date: Date.today
+    })
   end
 
   def edit_expense(title, data)

@@ -1,0 +1,3 @@
+<h1><%= action_name == 'new' ? 'Нова категорія' : 'Редагувати категорію' %></h1>
+<%= render 'form', category: @category %>
+<%= link_to "Назад", categories_path, class: "btn btn-secondary mt-3" %>

@@ -1,0 +1,18 @@
+<%= form_with model: category, local: true do |form| %>
+  <% if category.errors.any? %>
+    <div class="alert alert-danger">
+      <ul>
+        <% category.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3 col-md-3">
+    <%= form.label :name, class: "form-label" %>
+    <%= form.text_field :name, class: "form-control" %>
+  </div>
+
+  <%= form.submit class: "btn btn-primary" %>
+<% end %>

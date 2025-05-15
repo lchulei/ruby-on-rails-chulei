@@ -1,17 +1,27 @@
 <%= form_with model: expense, local: true do |form| %>
-  <div class="mb-3">
-    <%= form.label :amount, class: "form-label" %>
+  <div class="mb-3 col-md-3">
+    <%= form.label :amount, "Сума", class: "form-label" %>
     <%= form.number_field :amount, step: 0.01, class: "form-control" %>
   </div>
 
-  <div class="mb-3">
-    <%= form.label :description, class: "form-label" %>
+  <div class="mb-3 col-md-3">
+    <%= form.label :description, "Опис", class: "form-label" %>
     <%= form.text_field :description, class: "form-control" %>
   </div>
 
-  <div class="mb-3">
-    <%= form.label :spendAt, class: "form-label" %>
+  <div class="mb-3 col-md-3">
+    <%= form.label :spendAt, "Дата", class: "form-label" %>
     <%= form.date_field :spendAt, class: "form-control" %>
+  </div>
+
+  <div class="mb-3 col-md-3">
+    <%= form.label :category_ids, "Категорії", class: "form-label" %>
+    <%= form.collection_select :category_ids, Category.all, :id, :name, {}, { multiple: true, class: "form-select" } %>
+  </div>
+
+  <div class="mb-3 col-md-3">
+    <%= form.label :payment_method_ids, "Способи оплати", class: "form-label" %>
+    <%= form.collection_select :payment_method_ids, PaymentMethod.all, :id, :name, {}, { multiple: true, class: "form-select" } %>
   </div>
 
   <%= form.submit class: "btn btn-primary" %>

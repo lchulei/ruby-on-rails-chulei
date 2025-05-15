@@ -1,4 +1,12 @@
 ---
+Кава:
+  :amount: 45
+  :categories:
+  - Їжа
+  - Напої
+  :payment_methods:
+  - Готівка
+  :date: 2025-05-12
 Покупка ноутбука:
   :amount: 30000
   :categories:

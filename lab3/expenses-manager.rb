@@ -1,6 +1,9 @@
 require 'json'
 require 'yaml'
+require 'date'
 require_relative 'expense'
+require_relative 'category'
+require_relative 'payment-method'
 
 class ExpenseManager
   def initialize
@@ -13,10 +16,15 @@ class ExpenseManager
     amount = gets.to_f
     print "Опис: "
     description = gets.chomp
+
     print "Категорії (через кому): "
-    categories = gets.chomp.split(',').map(&:strip)
+    category_names = gets.chomp.split(',').map(&:strip)
+    categories = category_names.map { |name| Category.new(name) }
+
     print "Способи оплати (через кому): "
-    payment_methods = gets.chomp.split(',').map(&:strip)
+    payment_names = gets.chomp.split(',').map(&:strip)
+    payment_methods = payment_names.map { |name| PaymentMethod.new(name) }
+
     print "Дата (YYYY-MM-DD, залишити порожнім для сьогодні): "
     date_input = gets.chomp
     date = date_input.empty? ? Date.today : Date.parse(date_input)
@@ -29,6 +37,7 @@ class ExpenseManager
       payment_methods: payment_methods,
       date: date
     )
+
     @expenses << expense
     @next_id += 1
     puts "Витрату додано!"
@@ -61,11 +70,17 @@ class ExpenseManager
 
       print "Нові категорії: "
       input = gets.chomp
-      expense.categories = input.split(',').map(&:strip) unless input.empty?
+      unless input.empty?
+        names = input.split(',').map(&:strip)
+        expense.categories = names.map { |name| Category.new(name) }
+      end
 
       print "Нові способи оплати: "
       input = gets.chomp
-      expense.payment_methods = input.split(',').map(&:strip) unless input.empty?
+      unless input.empty?
+        names = input.split(',').map(&:strip)
+        expense.payment_methods = names.map { |name| PaymentMethod.new(name) }
+      end
 
       puts "Витрату оновлено!"
     else
